@@ -1,0 +1,23 @@
+{
+  "name": "airbnb-clone",
+  "version": "1.0.0",
+  "description": "Challenge: Create a small version of Airbnb - Windbnb with given data, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:",
+  "main": "AirBnbList.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ny-Rianala/airbnb-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ny-Rianala/airbnb-clone/issues"
+  },
+  "homepage": "https://github.com/Ny-Rianala/airbnb-clone#readme",
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}

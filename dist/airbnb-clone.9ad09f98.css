@@ -1,0 +1,93 @@
+html {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(244, 244, 244);
+    color: #333333;
+}
+
+p {
+    font-size: 16px;
+}
+
+
+
+img {
+   width: 100%; 
+   border-radius: 24px;
+}
+
+li {
+    list-style: none;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    margin-left: 13px;
+    margin-right: 12px;
+}
+ 
+
+.bottom-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card {
+    padding-left: 0;
+}
+
+.button {
+    padding-left: 9px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 5px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #4F4F4F;
+    background-color: white;
+    border: 1px solid #4F4F4F;
+
+}
+
+h1 {
+    margin-left: 13px;
+}
+
+input {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 19px;
+    padding-bottom: 18px;
+    margin-bottom: 35px;
+    margin-top: 75px;
+    border-radius: 12px;
+    border: 1px solid #4F4F4F;
+}
+
+form {
+    margin-left: 39px;
+    margin-right: 39px;
+}
+
+
+@media (min-width:1114px) {
+    .card {
+        display: flex;
+        flex-direction: row;
+    }img {
+        width: 30%;
+    }
+}
+
+/*# sourceMappingURL=/airbnb-clone.9ad09f98.css.map */
