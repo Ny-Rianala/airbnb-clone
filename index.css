@@ -28,7 +28,7 @@ li {
     list-style: none;
 }
 
-.cards {
+.listOfCards {
     display: flex;
     flex-direction: column;
     margin-left: 13px;
@@ -80,12 +80,17 @@ form {
     margin-right: 39px;
 }
 
+svg {
+    fill: #EB5757;
+}
 
-@media (min-width:1114px) {
-    .card {
+
+@media (min-width:1110px) {
+    .listOfCards {
         display: flex;
         flex-direction: row;
+        align-items: center;
     }img {
-        width: 30%;
+        max-width: 50%;
     }
 }
