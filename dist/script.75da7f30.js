@@ -28470,7 +28470,7 @@ module.exports = [{
   "beds": 3,
   "photo": "https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1275&q=80"
 }];
-},{}],"Header.js":[function(require,module,exports) {
+},{}],"EditForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28478,52 +28478,59 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function Header() {
-  var useModal = function useModal() {
-    var _useState = (0, _react.useState)(false),
-        _useState2 = _slicedToArray(_useState, 2),
-        isActive = _useState2[0],
-        setIsActive = _useState2[1];
-
-    var open = function open() {
-      return setIsActive(true);
-    };
-
-    var close = function close() {
-      return setIsActive(false);
-    };
-  };
-
+function EditForm() {
+  // class Select extends React.Component {
+  //     constructor(props) {
+  //       super(props);
+  //       this.state = { value: 'select'};
+  //     }
+  //     onChange(e) {
+  //       this.setState({
+  //         value: e.target.value
+  //       })
+  //     }
+  //     render() {
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "card-heading"
-  }, /*#__PURE__*/_react.default.createElement("form", {
+    className: "form-group"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "select"
+  }), /*#__PURE__*/_react.default.createElement("select", {
+    className: "form-control"
+  }, /*#__PURE__*/_react.default.createElement("option", {
+    value: "Helsinki, Finland"
+  }, "Helsinki, Finland"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Turku, Finland"
+  }, "Turku, Finland"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Oulu, Finland"
+  }, "Oulu, Finland"), /*#__PURE__*/_react.default.createElement("option", {
+    value: "Vaasa, Finland"
+  }, "Vaasa, Finland")));
+}
+
+var _default = EditForm;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"AddGuest.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function AddGuest() {
+  return /*#__PURE__*/_react.default.createElement("form", {
     className: "form"
   }, /*#__PURE__*/_react.default.createElement("label", {
     className: "label",
     htmlFor: "query"
-  }), /*#__PURE__*/_react.default.createElement("input", {
-    className: "input",
-    type: "text",
-    name: "query",
-    placeholder: "hsjdha"
   }), /*#__PURE__*/_react.default.createElement("input", {
     className: "input",
     type: "number",
@@ -28541,12 +28548,36 @@ function Header() {
     fill: "none"
   }), /*#__PURE__*/_react.default.createElement("path", {
     d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-  })))), /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"));
+  }))));
+}
+
+var _default = AddGuest;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _EditForm = _interopRequireDefault(require("./EditForm.js"));
+
+var _AddGuest = _interopRequireDefault(require("./AddGuest.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "card-heading"
+  }, /*#__PURE__*/_react.default.createElement(_EditForm.default, null), /*#__PURE__*/_react.default.createElement(_AddGuest.default, null)), /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"));
 }
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./EditForm.js":"EditForm.js","./AddGuest.js":"AddGuest.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28621,7 +28652,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51925" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58887" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

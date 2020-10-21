@@ -46,6 +46,12 @@ li {
     padding-left: 0;
 }
 
+.card-heading {
+    display: flex;
+    flex-direction: row;
+    margin-left: 23px;
+}
+
 .button {
     padding-left: 9px;
     padding-right: 8px;
@@ -64,7 +70,7 @@ h1 {
     margin-left: 13px;
 }
 
-input {
+input , .form-control {
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 19px;
@@ -94,3 +100,4 @@ svg {
         max-width: 50%;
     }
 }
+

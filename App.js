@@ -1,7 +1,8 @@
 import React from "react";
 import AirBnbList from "./AirBnbList.js";
 import Stays from "./stays.json";
-import Header from "./Header.js"
+import Header from "./Header.js";
+
 
 
  function App() {
