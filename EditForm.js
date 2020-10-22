@@ -2,18 +2,6 @@ import React from "react";
 
 
 function EditForm() {
-    // class Select extends React.Component {
-    //     constructor(props) {
-    //       super(props);
-          
-    //       this.state = { value: 'select'};
-    //     }
-    //     onChange(e) {
-    //       this.setState({
-    //         value: e.target.value
-    //       })
-    //     }
-    //     render() {
         return (
             <div className="form-group">
                 <label htmlFor="select"></label>
@@ -25,7 +13,11 @@ function EditForm() {
                 </select>
             </div>
       )
-}
+    }
 
 
 export default EditForm;
+
+
+
+

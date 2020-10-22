@@ -70,6 +70,12 @@ h1 {
     margin-left: 13px;
 }
 
+
+.heading {
+    display: flex;
+    
+}
+
 input , .form-control {
     padding-left: 16px;
     padding-right: 16px;
@@ -81,10 +87,6 @@ input , .form-control {
     border: 1px solid #4F4F4F;
 }
 
-form {
-    margin-left: 39px;
-    margin-right: 39px;
-}
 
 svg {
     fill: #EB5757;

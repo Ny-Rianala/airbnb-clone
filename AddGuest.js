@@ -2,6 +2,7 @@ import React from "react";
 
 
 function AddGuest() {
+        
           return (
               <form className="form">
                 <label className="label" htmlFor="query"></label>

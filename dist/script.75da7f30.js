@@ -28310,9 +28310,9 @@ function AirBnbList(props) {
     className: "bottom-card"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "button"
-  }, "Super Host"), /*#__PURE__*/_react.default.createElement("li", null, props.type), /*#__PURE__*/_react.default.createElement("li", null, props.beds), /*#__PURE__*/_react.default.createElement("li", null, props.rating, /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement("svg", {
+  }, "Super Host"), /*#__PURE__*/_react.default.createElement("li", null, props.type), /*#__PURE__*/_react.default.createElement("li", null, props.beds, "beds"), /*#__PURE__*/_react.default.createElement("li", null, props.rating, /*#__PURE__*/_react.default.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    "enable-background": "new 0 0 24 24",
+    enableBackground: "new 0 0 24 24",
     height: "24",
     viewBox: "0 0 24 24",
     width: "24"
@@ -28323,7 +28323,7 @@ function AirBnbList(props) {
     x: "0"
   }), /*#__PURE__*/_react.default.createElement("polygon", {
     points: "14.43,10 12,2 9.57,10 2,10 8.18,14.41 5.83,22 12,17.31 18.18,22 15.83,14.41 22,10"
-  })))))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("li", null, props.title)))));
+  }))))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("li", null, props.title)))));
 }
 
 var _default = AirBnbList;
@@ -28483,17 +28483,6 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function EditForm() {
-  // class Select extends React.Component {
-  //     constructor(props) {
-  //       super(props);
-  //       this.state = { value: 'select'};
-  //     }
-  //     onChange(e) {
-  //       this.setState({
-  //         value: e.target.value
-  //       })
-  //     }
-  //     render() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/_react.default.createElement("label", {
@@ -28569,15 +28558,56 @@ var _AddGuest = _interopRequireDefault(require("./AddGuest.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Header() {
+// import Search from "./Search.js";
+function Header(props) {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "card-heading"
-  }, /*#__PURE__*/_react.default.createElement(_EditForm.default, null), /*#__PURE__*/_react.default.createElement(_AddGuest.default, null)), /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"));
+  }, /*#__PURE__*/_react.default.createElement(_EditForm.default, null), /*#__PURE__*/_react.default.createElement(_AddGuest.default, null)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "heading"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", null, props.Stay.length, "+Stays")));
 }
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./EditForm.js":"EditForm.js","./AddGuest.js":"AddGuest.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./EditForm.js":"EditForm.js","./AddGuest.js":"AddGuest.js"}],"node_modules/random-id/index.js":[function(require,module,exports) {
+
+var possibilities = {
+  lowerCased: 'abcdefghijklmnopqrstuvwxyz',
+  capitals: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  numbers: '0123456789',
+  special: '~!@#$%^&()_+-={}[];\','
+};
+
+function randomId(len, pattern) {
+  if (!len) len = 30;
+  if (!pattern) pattern = 'aA0';
+
+  var chars = '';
+
+  pattern.split('').forEach((a) => {
+    if (!isNaN(parseInt(a))) {
+      chars += possibilities.numbers;
+    } else if (/[a-z]/.test(a)) {
+      chars += possibilities.lowerCased;
+    } else if (/[A-Z]/.test(a)) {
+      chars += possibilities.capitals;
+    } else {
+      chars += possibilities.special;
+    }
+  });
+
+  var result = '';
+
+  for (var i = 0; i < len; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length)); 
+  }
+
+  return result;
+}
+
+module.exports = randomId;
+
+},{}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28585,7 +28615,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _AirBnbList = _interopRequireDefault(require("./AirBnbList.js"));
 
@@ -28593,26 +28623,118 @@ var _stays = _interopRequireDefault(require("./stays.json"));
 
 var _Header = _interopRequireDefault(require("./Header.js"));
 
+var _randomId = _interopRequireDefault(require("random-id"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function App() {
-  var listOfStays = _stays.default.map(function (Stay) {
-    return /*#__PURE__*/_react.default.createElement(_AirBnbList.default, {
-      key: Stay.id,
-      title: Stay.title,
-      rating: Stay.rating,
-      type: Stay.type,
-      beds: Stay.beds,
-      photo: Stay.photo
-    });
-  });
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), listOfStays);
-}
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+// import Search from "./Search.js";
+var App = /*#__PURE__*/function (_Component) {
+  _inherits(App, _Component);
+
+  var _super = _createSuper(App);
+
+  function App() {
+    var _this;
+
+    _classCallCheck(this, App);
+
+    _this = _super.call(this);
+
+    _defineProperty(_assertThisInitialized(_this), "SearchStay", function (e) {
+      var searches = e.target.Search;
+
+      _this.setState({
+        Search: searches
+      });
+    });
+
+    _this.state = {
+      Search: null
+    };
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var listOfStays = _stays.default.filter(function (Stay) {
+        console.log(Stay);
+
+        if (Stay.Search === null) {
+          return Stay;
+        } else if (Stay.city.toLowerCase()) {
+          return Stay;
+        }
+      }).map(function (Stay) {
+        return /*#__PURE__*/_react.default.createElement(_AirBnbList.default, {
+          key: (0, _randomId.default)(),
+          title: Stay.title,
+          rating: Stay.rating,
+          type: Stay.type,
+          beds: Stay.beds,
+          photo: Stay.photo
+        });
+      });
+
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        placeholder: "Search a stay",
+        onChange: function onChange(e) {
+          return _this2.SearchStay(e);
+        }
+      }), /*#__PURE__*/_react.default.createElement(_Header.default, {
+        Stay: _stays.default
+      }), listOfStays);
+    }
+  }]);
+
+  return App;
+}(_react.Component); // function App() {
+//   const [stay, setStays] = useState("Stays");
+//   const [searchStay, setSeacchStay] = useState("");
+//   return (
+//       <div>
+//         onChange() = e => {
+//             const filteredStay = Stays.filter() 
+//         }
+//       </div>
+//   )
+// }
+
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./AirBnbList.js":"AirBnbList.js","./stays.json":"stays.json","./Header.js":"Header.js"}],"script.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./AirBnbList.js":"AirBnbList.js","./stays.json":"stays.json","./Header.js":"Header.js","random-id":"node_modules/random-id/index.js"}],"script.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28652,7 +28774,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58887" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51864" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
