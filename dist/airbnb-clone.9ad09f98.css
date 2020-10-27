@@ -69,6 +69,13 @@ li {
 h1 {
     margin-left: 13px;
 }
+ 
+.openModal {
+    background-color: white;
+    height: 50vh;
+    width: 100vw;
+    z-index: 2;
+}
 
 
 .heading {
@@ -88,10 +95,30 @@ input , .form-control {
 }
 
 
+.card-heading {
+    /* position: absolute; */
+    padding-bottom: 6rem;
+}
+.heading {
+    margin-bottom: 1rem;
+}
+
 svg {
     fill: #EB5757;
 }
+.addBtn {
+    padding-left: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-right: 2rem;
+    border: none;
+    border-radius: 10px;
+}
 
+.addBtn:hover {
+    background-color: rgb(192, 181, 181);
+    cursor: pointer;
+}   
 
 @media (min-width:1110px) {
     .listOfCards {

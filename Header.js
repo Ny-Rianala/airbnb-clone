@@ -7,10 +7,10 @@ import AddGuest from "./AddGuest.js";
 function Header(props) {
     return(
         <div>
-            <div className="card-heading">
+            <div>
                 <EditForm />
-                <AddGuest />
-                
+                <div className="card-heading">
+            </div>
             </div>
             <div className="heading">
                 <h1>Stays in Finland</h1>

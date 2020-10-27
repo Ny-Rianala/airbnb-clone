@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import AddGuest from "./AddGuest";
+import Search from "./Search";
 
 
 function EditForm() {
+    const [isClicked, setIsClicked] = useState(false);
         return (
-            <div className="form-group">
-                <label htmlFor="select"></label>
-                <select className="form-control">
-                    <option value="Helsinki, Finland">Helsinki, Finland</option>
-                    <option value="Turku, Finland">Turku, Finland</option>
-                    <option value="Oulu, Finland">Oulu, Finland</option>
-                    <option value="Vaasa, Finland">Vaasa, Finland</option>
-                </select>
+            <div>
+                <button className="addBtn" onClick={() => setIsClicked(!isClicked)}>Add Location</button>
+                <button className="addBtn" onClick={() => setIsClicked(!isClicked)}>Add Guests</button>
+                {isClicked && 
+                   <div className="openModal">
+                       <AddGuest />
+                       <Search />
+                   </div>}
             </div>
       )
     }
